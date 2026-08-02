@@ -30,3 +30,10 @@ La relazione deve contenere:
 \end{document}
 ```
 
+Vogliamo confrontare varie implementazioni di statistiche d'ordine dinamiche:
+1    Con lista ordinata
+2    Con ABR senza attributo {\em size}
+3    Come visto a lezione
+
+Nota: La lista deve essere implementata considerando strutture collegate con puntatori e non la struttura dati lista di Python.
+
