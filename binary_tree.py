@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, key, left, right, p):
+    def __init__(self, key, left=None, right=None, p=None):
         self.key = key
         self.left = left
         self.right = right
@@ -18,17 +18,7 @@ class BinaryTree:
     def inOrderTreeWalk(self):
         self._walk(self.root)
 
-    def treeMinimum(self, x):
-        while x.left is not None:
-            x = x.left
-        return x
-
-    def treeMaximum(self, x):
-        while x.right is not None:
-            x = x.right
-        return x
-
-    def iterativeSearch(self, k):
+    def iterativeTreeSearch(self, k):
         x = self.root
         while x is not None and k  is not x.key:
             if k < x.key:
@@ -40,20 +30,21 @@ class BinaryTree:
     def treeInsert(self, z):
         y = None
         x = self.root
+        n = Node(z)
         while x is not None:
             y = x
-            if z.key < x.key:
+            if n.key < x.key:
                 x = x.left
             else:
                 x = x.right
-            z.p = y
+            n.p = y
         if y is None:
             # Empty tree
-            self.root = z
-        elif z.key < y.key:
-            y.left = z
+            self.root = n
+        elif n.key < n.key:
+            y.left = n
         else:
-            y.right = z
+            y.right = n
 
     def _transplant(self, u, v):
         if u.p is None:

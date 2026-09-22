@@ -37,3 +37,20 @@ Vogliamo confrontare varie implementazioni di statistiche d'ordine dinamiche:
 
 Nota: La lista deve essere implementata considerando strutture collegate con puntatori e non la struttura dati lista di Python.
 
+---
+
+- Linked list:
+  - LinkedList() empty list
+  - LinkedList(node) starting node
+  - search(node) search node
+  - delete(node) delete node
+  - orderedInsert(node)
+- Node
+  - Node(next, key)
+
+- Binary Tree:
+  - InOrderTreeWalk() print
+  - treeMinium/treeMaximum(node) maximum and minimun from a starting node
+  - iterativeSearch(node) iterative search of a node
+  - treeInsert(node) insert new node
+  - treeDelete(node) delete a node
