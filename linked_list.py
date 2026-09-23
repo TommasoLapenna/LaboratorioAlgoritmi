@@ -5,8 +5,8 @@ class Node:
         self.prev = prev
 
 class LinkedList:
-    def __init__(self):
-        self.head = None
+    def __init__(self, head = None):
+        self.head = head
 
     def search(self, k):
         x = self.head
