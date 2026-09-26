@@ -18,7 +18,6 @@ class AVLTree(BinaryTree):
         return x.height if x is not None else 0
 
     def _leftRotate(self, x):
-        # BEFORE EXECUTION: x.right is not None
         y = x.right
         x.right = y.left
         x.height = max(self._h(x.left), self._h(x.right)) + 1
@@ -36,7 +35,6 @@ class AVLTree(BinaryTree):
         x.p = y
 
     def _rightRotate(self, x):
-        # BEFORE EXECUTION: x.left is not None
         y = x.left
         x.left = y.right
         x.height = max(self._h(x.left), self._h(x.right)) + 1
@@ -150,7 +148,6 @@ class AugmentedAVLTree(AVLTree):
 
     @staticmethod
     def _s(x):
-        """Metodo di supporto per ottenere la size di un nodo in sicurezza, analogo a _h(x)."""
         return x.size if x is not None else 0
 
     @override
@@ -189,11 +186,9 @@ class AugmentedAVLTree(AVLTree):
 
     @override
     def _avlDeleteFixup(self, x):
-        # Stesso concetto dell'insert: aggiorniamo la size risalendo
         while x is not None:
             x.height = max(self._h(x.left), self._h(x.right)) + 1
 
-            # NUOVO: Calcolo size
             x.size = self._s(x.left) + self._s(x.right) + 1
 
             if self._h(x.left) - self._h(x.right) == 2:

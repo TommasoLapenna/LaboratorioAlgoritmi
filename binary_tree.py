@@ -82,7 +82,6 @@ class BinaryTree:
             y.left.p = y
 
     def _display(self, x):
-        """Returns (lines, width, height, x-coord of x's label midpoint)."""
         if x is None:
             return [], 0, 0, 0
 

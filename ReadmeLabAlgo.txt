@@ -13,3 +13,5 @@ Per eseguire il codice:
 Se si esegue da PythonEverywhere:
 # cd LaboratorioAlgoritmi
 # python main.py
+
+Il risultato del test si trova tra i file della cartella, col nome "scaling_results.png"
