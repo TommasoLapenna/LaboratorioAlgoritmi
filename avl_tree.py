@@ -238,6 +238,7 @@ class AugmentedAVLTree(AVLTree):
     def _osselectWalk(self, x, i):
         if x is None:
             return None
+        self.nodeVisited += 1
         r = self._s(x.left) + 1
         if i == r:
             return x
@@ -247,5 +248,20 @@ class AugmentedAVLTree(AVLTree):
             return self._osselectWalk(x.right, i-r)
 
     def osselect(self, i):
+        self.nodeVisited = 0
         return self._osselectWalk(self.root, i)
 
+    def osrank(self, k):
+        self.nodeVisited = 0
+        r = 0
+        x = self.root
+        while x is not None:
+            self.nodeVisited += 1
+            if k == x.key:
+                return r + self._s(x.left) + 1
+            elif k < x.key:
+                x = x.left
+            else:
+                r = r + self._s(x.left) + 1
+                x = x.right
+        return None

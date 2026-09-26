@@ -7,6 +7,7 @@ class Node:
 class LinkedList:
     def __init__(self, head = None):
         self.head = head
+        self.nodeVisited = 0
 
     def search(self, k):
         x = self.head
@@ -49,20 +50,26 @@ class LinkedList:
 
     # ORDER STATISTICS METHODS
     def osselect(self, i):
+        self.nodeVisited = 0
         if i < 1:
             return None
         x = self.head
+        self.nodeVisited += 1
         count = 1
-        while x is not None and count is not i:
+        while x is not None and count != i:
+            self.nodeVisited += 1
             x = x.next
             count+=1
         return x
 
     def osrank(self, x):
         y = self.head
-
+        self.nodeVisited = 0
         count = 1
-        while y is not None and y.key is not x:
+        while y is not None:
+            self.nodeVisited += 1
+            if y.key == x:
+                break
             count +=1
             y = y.next
         if y is None:

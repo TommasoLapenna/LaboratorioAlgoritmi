@@ -4,10 +4,10 @@ class Node:
         self.left = left
         self.right = right
         self.p = p
-
 class BinaryTree:
     def __init__(self, root = None):
         self.root = root
+        self.nodeVisited = 0
 
     def _walk(self, x):
         if x is not None:
@@ -56,12 +56,12 @@ class BinaryTree:
         if v is not None:
             v.p = u.p
 
-    def treeMinimum(self, x):
+    def _treeMinimum(self, x):
         while x.left is not None:
             x = x.left
         return x
 
-    def treeMaximum(self, x):
+    def _treeMaximum(self, x):
         while x.right is not None:
             x = x.right
         return x
@@ -72,7 +72,7 @@ class BinaryTree:
         elif z.right is None:
             self._transplant(z, z.left)
         else:
-            y = self.treeMinimum(z.right)
+            y = self._treeMinimum(z.right)
             if y.p is not z:
                 self._transplant(y, y.right)
                 y.right = z.right
@@ -135,6 +135,7 @@ class OrderStatisticTree (BinaryTree):
 
 
     def osselect(self, i):
+        self.nodeVisited = 0
         if self.root is None or i <= 0:
             return None
 
@@ -145,6 +146,7 @@ class OrderStatisticTree (BinaryTree):
             while current is not None:
                 stack.append(current)
                 current = current.left
+                self.nodeVisited += 1
 
             current = stack.pop()
             i-=1
@@ -155,6 +157,7 @@ class OrderStatisticTree (BinaryTree):
         return None
 
     def osrank(self, x):
+        self.nodeVisited = 0
         if self.root is None:
             return 0
         i=0
@@ -165,6 +168,7 @@ class OrderStatisticTree (BinaryTree):
             while current is not None:
                 stack.append(current)
                 current = current.left
+                self.nodeVisited += 1
 
             current = stack.pop()
             i +=1
